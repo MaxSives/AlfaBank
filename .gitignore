@@ -1,0 +1,7 @@
+node_modules
+allure-results
+.vscode
+.idea
+mochawesome-report
+.build
+.nyc_output
