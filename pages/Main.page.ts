@@ -1,5 +1,5 @@
-import { waitForClickable, waitForDisplayed } from "../helper/waitElement.helper";
-import { $ } from "@wdio/globals";
+import {waitForClickable, waitForDisplayed} from "../helper/waitElement.helper";
+import {$} from "@wdio/globals";
 
 class MainPage {
 
@@ -20,7 +20,7 @@ class MainPage {
 
     public async getWindowBasket(): Promise<void> {
         await this.dropDownBacket
-            .waitForDisplayed({ timeout: 5000, timeoutMsg: "The element is not dispalyed" });
+            .waitForDisplayed({timeout: 5000, timeoutMsg: "The element is not dispalyed"});
     }
 
     public async clickButtonGoBasket(): Promise<void> {
@@ -28,10 +28,10 @@ class MainPage {
         await waitForClickable(selector, selector.click);
     };
 
-    public async clearAllGoodsInBacket(): Promise<void> {
+    public async clearAllGoodsInBasket(): Promise<void> {
         await waitForClickable(this.dropDownBacket, this.dropDownBacket.click);
-        const buttonClearBacket = $("//*[@id="basketContainer"]/div[2]/div[3]/a");
-        await waitForClickable(buttonClearBacket, buttonClearBacket.click);
+        const buttonClearBasket = $("/html/body/div/nav/div/div/ul/li[2]/div[2]/div[3]/a");
+        await waitForClickable(buttonClearBasket, buttonClearBasket.click);
     };
 
     public async clickButtonByBookFullPrice() {
@@ -52,6 +52,29 @@ class MainPage {
     public async getCommonPrice(): Promise<string> {
         const selector = $("span[class='basket_price']");
         return waitForDisplayed(selector, selector.getText);
+    }
+
+    public async showDiscountGoods(): Promise<void> {
+        const selector = $("id=['gridCheck']");
+        await waitForClickable(selector, selector.click)
+    }
+
+    public async selectFirstDiscountBook(): Promise<void> {
+        const selector = $("/html/body/div/div[1]/div/div[2]/div[1]/div/div[2]/button");
+        await waitForClickable(selector, selector.click);
+    }
+
+    public async selectEightGoods(): Promise<void> {
+        for (let i: number = 1; i === 9; i++) {
+            let selector = $("/html/body/div/div[1]/div/div[2]/div[${i}]/div/div[2]/button");
+            await waitForClickable(selector, selector.click);
+        }
+    }
+
+    public async selectNineBooksWithDiscount(): Promise<void> {
+        const setCount = $("name=['product-enter-count']");
+        await waitForClickable(setCount, setCount.setValue, "9");
+        await this.selectFirstDiscountBook();
     }
 
     private get dropDownBacket(): ReturnType<WebdriverIO.Browser["$"]> {

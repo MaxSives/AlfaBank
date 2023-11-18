@@ -12,12 +12,11 @@ export const config: Options.Testrunner = {
     },
 
     suites: {
-        adminSuites: [
-            "./test/specs/web/admin/autoReconciliationGroup.test.ts",
-        ],
-
-        //Admin
-        authorization: ["./test/specs/web/admin/authorization.test.ts"],
+        case1: ["./test/specs/case1.test.ts"],
+        case2: ["./test/specs/case2.test.ts"],
+        case3: ["./test/specs/case3.test.ts"],
+        case4: ["./test/specs/case4.test.ts"],
+        case5: ["./test/specs/case5.test.ts"],
     },
 
     maxInstances: 10,
@@ -26,12 +25,12 @@ export const config: Options.Testrunner = {
 
     capabilities: [{
 
-        maxInstances: 4,
+        maxInstances: 1,
 
         browserName: "chrome",
         "goog:chromeOptions": {
-            args: ["--headless", "--window-size=1920,1080", " --no-sandbox"], //for Jenkins
-            //args: ["--window-size=1920,1080"], //for Debug
+            //args: ["--headless", "--window-size=1920,1080", " --no-sandbox"], //for Jenkins
+            args: ["--window-size=1920,1080"], //for Debug
         },
         acceptInsecureCerts: true
     }],

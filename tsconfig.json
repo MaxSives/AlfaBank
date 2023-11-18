@@ -1,31 +1,16 @@
 {
     "compilerOptions": {
-        "moduleResolution": "node",
-        "module": "ESNext",
-        "target": "es2022",
-        "lib": [
-            "es2022",
-            "dom"
-        ],
+        "esModuleInterop": true,
         "types": [
             "node",
-            "@wdio/globals/types",
-            "expect-webdriverio",
-            "@wdio/mocha-framework",
             "webdriverio/async",
+            "@wdio/mocha-framework",
+            "expect-webdriverio",
+            "@wdio/globals/types"
         ],
-        "skipLibCheck": true,
-        "noEmit": true,
-        "allowImportingTsExtensions": true,
-        "resolveJsonModule": true,
-        "isolatedModules": true,
-        "strict": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
-        "noFallthroughCasesInSwitch": true
+        "target": "es5",
+        "outDir": "./build"
     },
-    "include": [
-        "test",
-        "wdio.conf.ts"
-    ]
+    "module": "esnext",
+    "moduleResolution": "node"
 }

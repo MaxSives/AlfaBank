@@ -15,6 +15,7 @@
     "chai": "^4.3.10"
   },
   "scripts": {
-    "wdio": "wdio run ./wdio.conf.ts"
+    "wdio": "wdio run ./wdio.conf.ts",
+    "wdioSuite": "npx wdio wdio.config.ts"
   }
 }
