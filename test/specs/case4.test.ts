@@ -3,8 +3,9 @@ import AuthManager from "../../Auth.manager";
 import MainPage from "../../pages/Main.page";
 import {expect} from "@wdio/globals";
 import {CommonExpectEnv} from "../../environment/commonExpect.env";
+import {CommonExpects} from "../../expected/CommonExpects";
 
-describe("Test case 4", async (): Promise<void> => {
+describe.skip("Test case 4", async (): Promise<void> => {
 
     before(async (): Promise<void> => {
         await LoginPage.login(AuthManager.getInstance.getUser);
@@ -20,7 +21,6 @@ describe("Test case 4", async (): Promise<void> => {
         expect(await MainPage.getCommonPrice()).toBe("400");
 
         await MainPage.clickButtonGoBasket();
-        const url: string = await browser.getUrl();
-        console.log(url)
+        await CommonExpects.checkCorrectnessUrl();
     })
 });

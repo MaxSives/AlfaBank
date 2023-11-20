@@ -2,8 +2,8 @@ import LoginPage from "../../pages/Login.page";
 import AuthManager from "../../Auth.manager"
 import {expect} from "@wdio/globals";
 import MainPage from "../../pages/Main.page";
-import {getUrl} from "../../helper/browser.helper"
 import {CommonExpectEnv} from "../../environment/commonExpect.env";
+import {CommonExpects} from "../../expected/CommonExpects";
 
 describe.skip("Test case 1", async (): Promise<void> => {
 
@@ -15,6 +15,6 @@ describe.skip("Test case 1", async (): Promise<void> => {
 
         await MainPage.clickDropDownBasket();
         await MainPage.clickButtonGoBasket();
-        expect(getUrl()).toBe(CommonExpectEnv.URL_BASKET_PAGE);
+        await CommonExpects.checkCorrectnessUrl();
     })
 });

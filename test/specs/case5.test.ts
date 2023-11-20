@@ -3,6 +3,7 @@ import AuthManager from "../../Auth.manager";
 import MainPage from "../../pages/Main.page";
 import {expect} from "@wdio/globals";
 import {CommonExpectEnv} from "../../environment/commonExpect.env";
+import {CommonExpects} from "../../expected/CommonExpects";
 
 describe.skip("Test case 5", async (): Promise<void> => {
 
@@ -20,7 +21,6 @@ describe.skip("Test case 5", async (): Promise<void> => {
         await MainPage.clickDropDownBasket();
 
         await MainPage.clickButtonGoBasket();
-        const url: string = await browser.getUrl();
-        console.log(url)
+        await CommonExpects.checkCorrectnessUrl();
     })
 });

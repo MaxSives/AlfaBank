@@ -25,9 +25,11 @@ class MainPage {
     };
 
     public async clearAllGoodsInBasket(): Promise<void> {
+        await browser.pause(2000);
         await waitForClickable(this.dropDownBacket, this.dropDownBacket.click);
+        await browser.pause(2000);
         const buttonClearBasket = $("/html/body/div/nav/div/div/ul/li[2]/div[2]/div[3]/a");
-        await waitForClickable(buttonClearBasket, buttonClearBasket.click);
+        await buttonClearBasket.click();
     };
 
     public async clickButtonByBookFullPrice() {
