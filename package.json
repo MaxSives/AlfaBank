@@ -1,21 +1,30 @@
 {
   "name": "my-new-project",
-  "type": "module",
+  "version": "1.0.0",
   "devDependencies": {
-    "@wdio/allure-reporter": "^8.21.0",
-    "@wdio/cli": "^8.22.1",
-    "@wdio/local-runner": "^8.22.1",
-    "@wdio/mocha-framework": "^8.22.0",
-    "@wdio/spec-reporter": "^8.21.0",
-    "@types/node": "^20.8.0",
-    "@types/chai": "^4.3.6",
+    "@types/chai": "^4.3.9",
+    "@types/mocha": "^10.0.2",
+    "@types/node": "^20.8.6",
+    "@typescript-eslint/eslint-plugin": "^6.8.0",
+    "@typescript-eslint/parser": "^6.8.0",
+    "@wdio/cli": "^8.19.0",
+    "@wdio/local-runner": "^8.19.0",
+    "@wdio/mocha-framework": "^8.19.0",
+    "@wdio/spec-reporter": "^8.19.0",
+    "@wdio/allure-reporter": "^8.23.1",
+    "chai": "^4.3.10",
+    "chromedriver": "^119.0.1",
+    "eslint": "^8.51.0",
+    "eslint-plugin-wdio": "^8.8.7",
+    "mocha": "^10.2.0",
     "ts-node": "^10.9.1",
+    "ts-node-register": "^1.0.0",
     "typescript": "^5.2.2",
-    "wdio-wait-for": "^3.0.8",
-    "chai": "^4.3.10"
+    "wdio-chromedriver-service": "^8.1.1",
+    "wdio-wait-for": "^3.0.7"
   },
   "scripts": {
     "wdio": "wdio run ./wdio.conf.ts",
-    "wdioSuite": "npx wdio wdio.config.ts"
+    "wdioSuite": "npx wdio ./wdio.config.ts"
   }
 }

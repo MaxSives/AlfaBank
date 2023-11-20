@@ -9,23 +9,19 @@ class MainPage {
     }
 
     public async getCountGoods(): Promise<string> {
-        const selector: ReturnType<WebdriverIO.Browser["$"]> = $("span[class='basket-count-items badge badge-primary']");
+        const selector: ReturnType<WebdriverIO.Browser["$"]> = $("/html/body/div/nav/div/div/ul/li[2]/span");
         return waitForDisplayed(selector, selector.getText)
     }
 
     public async clickDropDownBasket(): Promise<void> {
-        const selector = $("id=['dropdownBasket']");
+        const selector = $("[id='dropdownBasket']");
         await waitForClickable(selector, selector.click);
-    }
-
-    public async getWindowBasket(): Promise<void> {
-        await this.dropDownBacket
-            .waitForDisplayed({timeout: 5000, timeoutMsg: "The element is not dispalyed"});
     }
 
     public async clickButtonGoBasket(): Promise<void> {
-        const selector = $("href=['/basket']");
+        const selector = $("[href='/basket']");
         await waitForClickable(selector, selector.click);
+        await browser.pause(2000);
     };
 
     public async clearAllGoodsInBasket(): Promise<void> {
@@ -37,31 +33,33 @@ class MainPage {
     public async clickButtonByBookFullPrice() {
         const selector = $("/html/body/div/div[1]/div/div[2]/div[2]/div/div[2]/button")
         await waitForClickable(selector, selector.click);
+        await browser.refresh();
     }
 
     public async getTitleBook(): Promise<string> {
-        const selector = $("span[class='basket-item-title']");
+        const selector = $("[class='basket-item-title']");
         return waitForDisplayed(selector, selector.getText);
     }
 
     public async getItemPrice(): Promise<string> {
-        const selector = $("span[class='basket-item-price']");
+        const selector = $("[class='basket-item-price']");
         return waitForDisplayed(selector, selector.getText);
     }
 
     public async getCommonPrice(): Promise<string> {
-        const selector = $("span[class='basket_price']");
+        const selector = $("[class='basket_price']");
         return waitForDisplayed(selector, selector.getText);
     }
 
     public async showDiscountGoods(): Promise<void> {
-        const selector = $("id=['gridCheck']");
+        const selector = $("[id='gridCheck']");
         await waitForClickable(selector, selector.click)
     }
 
     public async selectFirstDiscountBook(): Promise<void> {
         const selector = $("/html/body/div/div[1]/div/div[2]/div[1]/div/div[2]/button");
         await waitForClickable(selector, selector.click);
+        await browser.refresh();
     }
 
     public async selectEightGoods(): Promise<void> {
@@ -72,13 +70,13 @@ class MainPage {
     }
 
     public async selectNineBooksWithDiscount(): Promise<void> {
-        const setCount = $("name=['product-enter-count']");
+        const setCount = $("[name='product-enter-count']");
         await waitForClickable(setCount, setCount.setValue, "9");
         await this.selectFirstDiscountBook();
     }
 
     private get dropDownBacket(): ReturnType<WebdriverIO.Browser["$"]> {
-        return $("aria-labelledby=['dropdownBasket']");
+            return $("[id='dropdownBasket']");
     }
 }
 
